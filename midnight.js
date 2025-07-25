@@ -5,6 +5,9 @@ function createWindow() {
     const win = new BrowserWindow({
         show: false,
         autoHideMenuBar: true,
+        minimizable: true,
+        minWidth: 1600, // TODO: adjust css to make it work properly and remove this line
+        minHeight: 800, // TODO: adjust css to make it work properly and remove this line
 
         webPreferences: {
             nodeIntegration: true
@@ -14,7 +17,7 @@ function createWindow() {
     win.maximize();
     win.show();
 
-    win.loadFile('core/views/homepage.html');
+    win.loadFile('core/views/test.html');
 }
 
 
