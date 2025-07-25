@@ -2,7 +2,7 @@
   "name": "midnight",
   "version": "1.0.0",
   "description": "An artificial intelligence based desktop application",
-  "main": "electron.js",
+  "main": "midnight.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
