@@ -1,0 +1,23 @@
+{
+  "name": "midnight",
+  "version": "1.0.0",
+  "description": "An artificial intelligence based desktop application",
+  "main": "electron.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KemonoBAT4/Midnight.git"
+  },
+  "author": "Kemono_BAT_4",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KemonoBAT4/Midnight/issues"
+  },
+  "homepage": "https://github.com/KemonoBAT4/Midnight#readme",
+  "devDependencies": {
+    "electron": "^37.2.4"
+  }
+}

@@ -1,5 +1,6 @@
 # Midnight
 
+
 # Ideas
 Here's are some ideas for future implementation and features.
 All the actions can be executed with text or voice recognition:
