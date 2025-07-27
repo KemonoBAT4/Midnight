@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- <title>Desktop Widget</title> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        #widget {
+            width: 200px;
+            height: 300px;
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            color: white;
+            -webkit-app-region: drag;
+        }
+
+        #widget-header {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #widget-close {
+            width: 16px;
+            height: 16px;
+            background: #ff5f56;
+            border-radius: 50%;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+        }
+
+        #widget-content {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+        }
+
+        .widget-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            -webkit-app-region: no-drag;
+        }
+
+        .widget-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .widget-item i {
+            font-style: normal;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #widget-footer {
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="widget">
+        <div id="widget-header">
+            <span>Widget</span>
+            <div id="widget-close"></div>
+        </div>
+        <div id="widget-content">
+            <div class="widget-item">
+                Quick Note
+                <i>Double-click to edit</i>
+            </div>
+            <div class="widget-item">
+                Timer
+                <i>00:00:00</i>
+            </div>
+            <div class="widget-item">
+                Weather
+                <i>Sunny, 72°F</i>
+            </div>
+            <div class="widget-item">
+                System Info
+                <i>CPU: 20%</i>
+            </div>
+        </div>
+        <div id="widget-footer">
+            Drag to move • Double-click to resize
+        </div>
+    </div>
+
+    <script>
+        // Electron would be available here in a real Electron app
+        document.getElementById('widget-close').addEventListener('click', () => {
+            // In Electron, this would be: window.close()
+            console.log('Closing widget');
+        });
+
+        // Simulate drag functionality (Electron would handle this natively with -webkit-app-region: drag)
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        document.getElementById('widget-header').addEventListener('mousedown', (e) => {
+            if (e.target.id !== 'widget-header') return;
+            isDragging = true;
+            offsetX = e.clientX - document.getElementById('widget').getBoundingClientRect().left;
+            offsetY = e.clientY - document.getElementById('widget').getBoundingClientRect().top;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            document.getElementById('widget').style.left = `${e.clientX - offsetX}px`;
+            document.getElementById('widget').style.top = `${e.clientY - offsetY}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Widget functionality would go here in a real Electron app
+        document.querySelectorAll('.widget-item').forEach(item => {
+            item.addEventListener('dblclick', () => {
+                alert(`Opening ${item.textContent.trim().split('\n')[0]}`);
+            });
+        });
+    </script>
+</body>
+</html>

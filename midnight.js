@@ -1,7 +1,10 @@
 
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
-function createWindow() {
+const iconPath = path.join(__dirname, "core", "assets", "icons", "midnight.svg");
+
+function midnightWindow() {
     const win = new BrowserWindow({
         show: false,
         autoHideMenuBar: true,
@@ -12,12 +15,13 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         }
+
     });
 
     win.maximize();
     win.show();
 
-    win.loadFile('core/views/test.html');
+    win.loadFile('core/views/midnightDesktop.html');
 }
 
 
@@ -28,9 +32,9 @@ app.on('window-all-closed', () => {
 });
 
 app.whenReady().then(() => {
-    createWindow();
+    midnightWindow();
 
     if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
+        midnightWindow();
     }
 });
