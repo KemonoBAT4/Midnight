@@ -11,3 +11,4 @@ All the actions can be executed with text or voice recognition:
 - chatting with the bot (optional)
 - help you log on something (access to the pc for example) (required)
 - send mails (required)
+- interface with arduino/raspberry to do more stuff (required)
