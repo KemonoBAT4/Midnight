@@ -2,7 +2,8 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-const iconPath = path.join(__dirname, "core", "assets", "icons", "midnight.svg");
+// FIXME: this does not work, find a way to put the icons
+// const iconPath = path.join(__dirname, "core", "assets", "icons", "midnight.svg");
 
 function midnightWindow() {
     const win = new BrowserWindow({
@@ -15,13 +16,13 @@ function midnightWindow() {
         webPreferences: {
             nodeIntegration: true
         }
-
     });
 
     win.maximize();
     win.show();
 
-    win.loadFile('core/views/midnightDesktop.html');
+    // win.loadFile("core/views/midnightDesktop.html");
+    win.loadFile('core/views/midnightDesktopNew.html');
 }
 
 
