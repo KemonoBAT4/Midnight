@@ -3,68 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nexus Assistant</title>
+        <title>Midnight</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-            :root {
-                --primary: #4F46E5;
-                --secondary: #6366F1;
-                --dark: #1E293B;
-                --light: #F8FAFC;
-                --accent: #10B981;
-            }
-
-            body {
-                font-family: 'Inter', sans-serif;
-                background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
-                color: var(--dark);
-                height: 100vh;
-                margin: 0;
-                overflow: hidden;
-            }
-
-            .sidebar-item:hover {
-                background-color: rgba(79, 70, 229, 0.1);
-            }
-
-            .sidebar-item.active {
-                background-color: rgba(79, 70, 229, 0.2);
-            }
-
-            .task-item:hover {
-                background-color: #F1F5F9;
-            }
-
-            .voice-wave {
-                animation: wave 1.5s infinite ease-in-out;
-            }
-
-            @keyframes wave {
-                0%, 100% { height: 10px; }
-                50% { height: 20px; }
-            }
-
-            .notification-dot {
-                animation: pulse 2s infinite;
-            }
-
-            @keyframes pulse {
-                0% { opacity: 0.7; }
-                50% { opacity: 1; }
-                100% { opacity: 0.7; }
-            }
-        </style>
+        <link rel="stylesheet" href="./../styles/window.css">
     </head>
+
     <body class="flex h-screen">
         <!-- Sidebar Navigation -->
         <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
             <div class="p-4 border-b border-gray-200">
                 <div class="flex items-center space-x-3">
-                    <img src="https://placehold.co/40x40" alt="Nexus Assistant logo - A futuristic blue and purple circular icon" class="rounded-lg">
-                    <h1 class="text-xl font-semibold">Nexus Assistant</h1>
+                    <img src="https://placehold.co/40x40" alt="Midnight Assistant logo - A futuristic blue and purple circular icon" class="rounded-lg">
+                    <h1 class="text-xl font-semibold">Midnight</h1>
                 </div>
             </div>
 
@@ -106,8 +57,8 @@
                 <div class="flex items-center space-x-3">
                     <img src="https://placehold.co/40x40" alt="User profile picture - Professional headshot of a smiling business person" class="rounded-full">
                     <div>
-                        <div class="font-medium">John Doe</div>
-                        <div class="text-xs text-gray-500">Admin</div>
+                        <div class="font-medium user-name">John Doe</div>
+                        <div class="text-xs text-gray-500 user-role">Admin</div>
                     </div>
                     <i class="fas fa-chevron-down ml-auto text-gray-500"></i>
                 </div>
@@ -123,7 +74,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <i class="fas fa-search text-gray-400"></i>
                         </div>
-                        <input type="text" class="block w-full pl-10 pr-16 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ask Nexus to do something...">
+                        <input type="text" class="block w-full pl-10 pr-16 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ask Midnight to do something...">
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
                             <button class="p-1 rounded-full hover:bg-gray-100">
                                 <i class="fas fa-microphone text-gray-500"></i>

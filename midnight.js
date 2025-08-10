@@ -1,6 +1,6 @@
 
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const { initializeDatabase } = require('./core/database/database');
 
 // FIXME: this does not work, find a way to put the icons
 // const iconPath = path.join(__dirname, "core", "assets", "icons", "midnight.svg");
@@ -21,6 +21,9 @@ function midnightWindow() {
     win.maximize();
     win.show();
 
+    // future page name
+    // win.loadFile('core/views/window.html');
+
     // win.loadFile("core/views/midnightDesktop.html");
     win.loadFile('core/views/midnightDesktopNew.html');
 }
@@ -32,7 +35,9 @@ app.on('window-all-closed', () => {
     }
 });
 
-app.whenReady().then(() => {
+// Init the database when app is ready
+app.whenReady().then(async () => {
+    await initializeDatabase();
     midnightWindow();
 
     if (BrowserWindow.getAllWindows().length === 0) {
