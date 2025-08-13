@@ -1,6 +1,5 @@
 
 const { app, BrowserWindow } = require('electron');
-const { initializeDatabase } = require('./core/database/database');
 
 // FIXME: this does not work, find a way to put the icons
 // const iconPath = path.join(__dirname, "core", "assets", "icons", "midnight.svg");

@@ -1,13 +1,16 @@
-
-const userSchema = {
+// user schema
+const userSchma = {
     id: {
-        type: 'string',
+        type: 'integer',
         required: true,
-        unique: true
+        unique: true,
+        primaryKey: true,
+        autoIncrement: true
     },
     username: {
         type: 'string',
-        required: true
+        required: true,
+        unique: true
     },
     name: {
         type: 'string',
@@ -19,20 +22,13 @@ const userSchema = {
     },
     email: {
         type: 'string',
-        required: true
-    },
-    token: {
-        type: 'string',
-        required: true
+        required: true,
+        unique: true
     },
     role: {
-        type: 'array',
-        required: true
-    },
-    active: {
-        type: 'boolean',
+        type: 'string',
         required: true
     }
 }
 
-module.exports = userSchema;
+module.exports = userSchma

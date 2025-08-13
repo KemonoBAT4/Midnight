@@ -1,117 +1,42 @@
-const { Low, JSONFile } = require('lowdb');
 
-// const { addUser, getUsers, getUsersById, getUserByEmail } = require('./functions/user');
+const sqllite3 = require('sqlite3').verbose();
+const path = require('path');
 
-// schemas
-const { userSchema } = require('./../schemas/user');
-const { settingsSchema } = require('./../schemas/settings');
-const { logSchema } = require('./../schemas/log');
-const { websiteSchema } = require('./../schemas/website');
-const { widgetSchema } = require('./../schemas/widget');
-const { taskSchema } = require('./../schemas/task');
-const { noteSchema } = require('./../schemas/note');
-const { mailSchema } = require('./../schemas/mail');
-const { calendarSchema } = require('./../schemas/calendar');
-const { shortcutSchema } = require('./../schemas/shortcut');
-const { themeSchema } = require('./../schemas/theme');
-const { roleSchema } = require('./../schemas/tole');
+const dbPath = path.join(__dirname, 'database.db');
 
+const { userSchema } = require('./schemas/user'); // done
+const { settingsSchema } = require('./schemas/setting'); // dont know how to set it up
+const { logSchema } = require('./schemas/log'); // done
+const { websiteSchema } = require('./schemas/website'); // done
+const { taskSchema } = require('./schemas/task'); // done
+const { noteSchema } = require('./schemas/note'); // done
+const { mailSchema } = require('./schemas/mail'); // done
+const { calendarSchema } = require('./schemas/calendar');
+const { shortcutSchema } = require('./schemas/shortcut');
+const { themeSchema } = require('./schemas/theme');
+const { roleSchema } = require('./schemas/role');
 
-const adapter = new JSONFile('db.json');
-const db = new Low(adapter);
+const db = new sqllite3.Database(dbPath, sqllite3.OPEN_READWRITE, (err) => {
+    if (!err) {
+        console.log('Connected to the database.');
 
-async function initializeDatabase() {
-    await db.read();
-    db.data ||= {
-        users: [],
-        settings: {},
-        logs: [],
-        websites: [],
-        widgets: [],
-        tasks: [],
-        notes: [],
-        mails: [],
-        calendar: [],
-        shortcuts: [],
-        themes: [],
-        roles: [],
-    };
-    await db.write();
+        db.run(
+            `CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT UNIQUE NOT NULL,
+                name TEXT NOT NULL,
+                surname TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+
+            )`
+        )
+
+    } else {
+        console.error('Error opening database:', err.message);
+    }
+});
+
+function createTables() {
+    "tables:"
+    "users, settings, logs, websites, widgets, tasks, notes, mails, calendar, shortcuts, themes, roles"
 }
-
-//##################
-//# USER FUNCTIONS #
-//#region ##########
-
-
-// get user by id
-async function getUserById(id) {
-    await db.read();
-    return db.data.users.find(user => user.id === id);
-}
-
-// gest user by email
-async function getUserByEmail(email) {
-    await db.read();
-    return db.data.users.find(user => user.email === email);
-}
-
-//#endregion #######
-
-//#####################
-//# WEBSITE FUNCTIONS #
-//#region #############
-
-async function addWebsite(website) {
-    await db.read();
-    db.data.websites.push(website);
-    await db.write();
-}
-
-async function getWebsites() {
-    await db.read();
-    return db.data.websites;
-}
-
-async function getWebsiteById(id) {
-    await db.read();
-    return db.data.websites.find(website => website.id === id);
-}
-
-//#endregion ##########
-
-//#################
-//# NOTE FUNCTION #
-//#################
-
-async function addNote(note) {
-    await db.read();
-    db.data.notes.push(note);
-    await db.write();
-}
-
-async function getNotes() {
-    await db.read();
-    return db.data.notes;
-}
-
-async function getNoteById(id) {
-    await db.read();
-    return db.data.notes.find(note => note.id === id);
-}
-
-//#endregion ######
-
-// Export the funtions
-module.exports = {
-    initializeDatabase,
-    db,
-    getUserById,
-    getUserByEmail,
-    addWebsite,
-    getWebsites,
-    getWebsiteById,
-    addNote,
-    getNotes,
-    getNoteById
-};

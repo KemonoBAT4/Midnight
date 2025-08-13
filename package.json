@@ -21,6 +21,7 @@
     "electron": "^37.2.4"
   },
   "dependencies": {
-    "lowdb": "^7.0.1"
+    "lowdb": "^7.0.1",
+    "sqlite3": "^5.1.7"
   }
 }
