@@ -9,8 +9,8 @@ function midnightWindow() {
         show: false,
         autoHideMenuBar: true,
         minimizable: true,
-        minWidth: 1600, // TODO: adjust css to make it work properly and remove this line
-        minHeight: 800, // TODO: adjust css to make it work properly and remove this line
+        minWidth: 1600,
+        minHeight: 800,
 
         webPreferences: {
             nodeIntegration: true
@@ -36,7 +36,7 @@ app.on('window-all-closed', () => {
 
 // Init the database when app is ready
 app.whenReady().then(async () => {
-    await initializeDatabase();
+    // await initializeDatabase();
     midnightWindow();
 
     if (BrowserWindow.getAllWindows().length === 0) {

@@ -1,5 +1,6 @@
 
 const mailSchema = {
+    tableName: 'mails',
     id: {
         type: 'integer',
         required: true,
