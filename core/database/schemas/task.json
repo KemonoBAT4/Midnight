@@ -1,0 +1,35 @@
+{
+    "tableName": "tasks",
+    "id": {
+        "type": "integer",
+        "primaryKey": true,
+        "autoIncrement": true
+    },
+    "title": {
+        "type": "string",
+        "required": true
+    },
+    "description": {
+        "type": "string",
+        "required": false
+    },
+    "favicon": {
+        "type": "string",
+        "required": false
+    },
+    "priority": {
+        "type": "integer",
+        "required": false
+    },
+    "dueDate": {
+        "type": "datetime",
+        "required": true
+    },
+    "userId": {
+        "type": "integer",
+        "references": {
+            "table": "users",
+            "column": "id"
+        }
+    }
+}

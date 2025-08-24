@@ -1,0 +1,32 @@
+{
+    "tableName": "websites",
+    "id": {
+        "type": "integer",
+        "primaryKey": true,
+        "autoIncrement": true
+    },
+    "title": {
+        "type": "string",
+        "required": true
+    },
+    "url": {
+        "type": "string",
+        "required": true,
+        "unique": false
+    },
+    "description": {
+        "type": "string",
+        "required": false
+    },
+    "favicon": {
+        "type": "string",
+        "required": false
+    },
+    "userId": {
+        "type": "integer",
+        "references": {
+            "table": "users",
+            "column": "id"
+        }
+    }
+}

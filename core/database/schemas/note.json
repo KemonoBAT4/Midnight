@@ -1,0 +1,27 @@
+{
+    "tableName": "notes",
+    "id": {
+        "type": "integer",
+        "primaryKey": true,
+        "autoIncrement": true
+    },
+    "title": {
+        "type": "string",
+        "required": true
+    },
+    "content": {
+        "type": "string",
+        "required": false
+    },
+    "createdAt": {
+        "type": "datetime",
+        "required": true
+    },
+    "userId": {
+        "type": "integer",
+        "references": {
+            "table": "users",
+            "column": "id"
+        }
+    }
+}

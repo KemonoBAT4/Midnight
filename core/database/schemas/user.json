@@ -1,0 +1,33 @@
+{
+    "tableName": "users",
+    "id": {
+        "type": "integer",
+        "primaryKey": true,
+        "autoIncrement": true
+    },
+    "username": {
+        "type": "string",
+        "required": true,
+        "unique": true
+    },
+    "name": {
+        "type": "string",
+        "required": true
+    },
+    "surname": {
+        "type": "string",
+        "required": true
+    },
+    "email": {
+        "type": "string",
+        "required": true,
+        "unique": true
+    },
+    "role": {
+        "type": "integer",
+        "references": {
+            "table": "users",
+            "column": "id"
+        }
+    }
+}
