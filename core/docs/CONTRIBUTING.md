@@ -26,7 +26,7 @@ Here's a small example of a demo pull request description you can use as a templ
 
 ```
 ### Description:
-Issue reference [here](https://github.com/Kemono-Industries/Midnight/issues/1)
+Issue reference [here](https://github.com/KemonoBAT4/Midnight/issues/1)
 - [X] Created a script to implement charts in the application dashboard
 
 ### Bug fixing:

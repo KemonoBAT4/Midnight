@@ -57,11 +57,7 @@ function createTables() {
         taskSchema
     ];
 
-    console.log(allSchemas);
-
     for (let schema of allSchemas) {
-
-        console.log(schema);
 
         let tableName = schema.tableName;
 
@@ -124,11 +120,9 @@ function createTables() {
                 let autoIncrement = value.autoIncrement ? resultQuery += 'AUTO_INCREMENT ' : '';
                 resultQuery += ',';
             }
-            console.log(resultQuery);
         })
 
         if (primaryKeys.length > 0) {
-
             for (let pk of primaryKeys) {
                 resultQuery += `PRIMARY KEY (${pk}),`
             }
@@ -145,7 +139,6 @@ function createTables() {
         let createTableQuery = `CREATE TABLE IF NOT EXISTS ${tableName} (${resultQuery})`;
 
         console.log(`Creating table: ${tableName}`);
-        console.log(createTableQuery);
         db.run(createTableQuery);
     }
 }
@@ -212,7 +205,6 @@ function midnightWindow() {
     // future page name
     // win.loadFile('core/views/window.html');
 
-    // win.loadFile("core/views/midnightDesktop.html");
     win.loadFile('core/views/midnightDesktopNew.html');
 }
 
