@@ -1,34 +1,22 @@
 {
-    "tableName": "tasks",
+    "tableName": "notes",
     "id": {
         "type": "integer",
         "primaryKey": true,
         "autoIncrement": true
     },
-    "title": {
-        "type": "string",
-        "required": true
-    },
     "content": {
         "type": "text",
         "required": false
     },
-    "favicon": {
-        "type": "string",
-        "required": false
-    },
-    "priority": {
-        "type": "integer",
-        "required": false
-    },
-    "dueDate": {
+    "sendAt": {
         "type": "datetime",
         "required": true
     },
-    "userId": {
+    "chat": {
         "type": "integer",
         "references": {
-            "table": "users",
+            "table": "chats",
             "column": "id"
         }
     }

@@ -1,5 +1,5 @@
 {
-    "tableName": "tasks",
+    "tableName": "notes",
     "id": {
         "type": "integer",
         "primaryKey": true,
@@ -9,23 +9,22 @@
         "type": "string",
         "required": true
     },
-    "content": {
-        "type": "text",
-        "required": false
-    },
-    "favicon": {
+    "description": {
         "type": "string",
         "required": false
     },
-    "priority": {
-        "type": "integer",
-        "required": false
-    },
-    "dueDate": {
+    "createdAt": {
         "type": "datetime",
         "required": true
     },
-    "userId": {
+    "userId1": {
+        "type": "integer",
+        "references": {
+            "table": "users",
+            "column": "id"
+        }
+    },
+    "userId2": {
         "type": "integer",
         "references": {
             "table": "users",

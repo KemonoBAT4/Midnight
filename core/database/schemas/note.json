@@ -10,7 +10,7 @@
         "required": true
     },
     "content": {
-        "type": "string",
+        "type": "text",
         "required": false
     },
     "createdAt": {

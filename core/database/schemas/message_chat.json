@@ -1,0 +1,17 @@
+{
+    "tableName": "notes",
+    "chat": {
+        "type": "integer",
+        "references": {
+            "table": "chats",
+            "column": "id"
+        }
+    },
+    "message": {
+        "type": "integer",
+        "references": {
+            "table": "messages",
+            "column": "id"
+        }
+    }
+}

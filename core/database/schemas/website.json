@@ -15,7 +15,7 @@
         "unique": false
     },
     "description": {
-        "type": "string",
+        "type": "text",
         "required": false
     },
     "favicon": {
