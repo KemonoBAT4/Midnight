@@ -23,6 +23,10 @@
         "required": true,
         "unique": true
     },
+    "picture": {
+        "type": "text",
+        "required": false
+    },
     "role": {
         "type": "integer",
         "references": {

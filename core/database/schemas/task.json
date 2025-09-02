@@ -21,6 +21,10 @@
         "type": "integer",
         "required": false
     },
+    "completed": {
+        "type": "boolean",
+        "required": true
+    },
     "dueDate": {
         "type": "datetime",
         "required": true
