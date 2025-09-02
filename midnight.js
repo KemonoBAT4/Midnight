@@ -37,20 +37,6 @@ function createTables() {
     "tables:"
     "users, settings, logs, websites, widgets, tasks, notes, mails, calendar, shortcuts, themes, roles"
 
-    // let allSchemas = [
-    //     userSchema,
-    //     // settingsSchema,
-    //     // logSchema,
-    //     websiteSchema,
-    //     taskSchema,
-    //     noteSchema,
-    //     mailSchema,
-    //     // calendarSchema,
-    //     // shortcutSchema,
-    //     // themeSchema,
-    //     // roleSchema
-    // ];
-
     let allSchemas = [
         userSchema,
         websiteSchema,
@@ -143,6 +129,10 @@ function createTables() {
     }
 }
 
+function createSampleData() {
+
+}
+
 // IPC handlers for database operations
 ipcMain.handle('get-objects-from-table', async (event, tableName) => {
     return new Promise((resolve, reject) => {
@@ -156,22 +146,22 @@ ipcMain.handle('get-objects-from-table', async (event, tableName) => {
     });
 });
 
-// ipcMain.handle('add-object-to-table', async (event, tableName, data) => {
-//     return new Promise((resolve, reject) => {
-//         const { username, name, surname, email } = userData;
-//         db.run(
-//             `INSERT INTO users (username, name, surname, email) VALUES (?, ?, ?, ?)`,
-//             [username, name, surname, email],
-//             function(err) {
-//                 if (err) {
-//                     reject(err);
-//                 } else {
-//                     resolve({ id: this.lastID, ...userData });
-//                 }
-//             }
-//         );
-//     });
-// });
+ipcMain.handle('add-object-to-table', async (event, tableName, data) => {
+    return new Promise((resolve, reject) => {
+        const { username, name, surname, email } = data;
+        db.run(
+            `INSERT INTO users (username, name, surname, email) VALUES (?, ?, ?, ?)`,
+            [username, name, surname, email],
+            function(err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve({ id: this.lastID, ...userData });
+                }
+            }
+        );
+    });
+});
 
 // ipcMain.handle('delete-object-from-table', async (event, tableName, id) => {
 //     return new Promise((resolve, reject) => {
@@ -195,7 +185,9 @@ function midnightWindow() {
         minHeight: 800,
 
         webPreferences: {
-            nodeIntegration: true
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: true,
+            contextIsolation: false
         }
     });
 
@@ -203,9 +195,9 @@ function midnightWindow() {
     win.show();
 
     // future page name
-    // win.loadFile('core/views/window.html');
+    win.loadFile('core/views/window.html');
 
-    win.loadFile('core/views/midnightDesktopNew.html');
+    // win.loadFile('core/views/midnightDesktopNew.html');
 }
 
 
