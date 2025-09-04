@@ -21,34 +21,34 @@
             </div>
 
             <div class="flex-1 overflow-y-auto p-4 space-y-1">
-                <div id="dashboard-page" class="sidebar-item active rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
+                <div class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
                     <i class="fas fa-home text-gray-600"></i>
                     <span>Dashboard</span>
                 </div>
 
-                <div id="calendar-page" class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
+                <div class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
                     <i class="fas fa-calendar text-gray-600"></i>
                     <span>Calendar</span>
                 </div>
 
-                <div id="tasks-page" class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
+                <div class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
                     <i class="fas fa-tasks text-gray-600"></i>
                     <span>Tasks</span>
                     <span class="ml-auto bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full">3</span>
                 </div>
 
-                <div id="notes-page" class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
+                <div class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
                     <i class="fas fa-sticky-note text-gray-600"></i>
                     <span>Notes</span>
                 </div>
 
-                <div id="notifications-page" class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
+                <div class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
                     <i class="fas fa-bell text-gray-600"></i>
                     <span>Notifications</span>
                     <div class="ml-auto w-2 h-2 bg-red-500 rounded-full notification-dot"></div>
                 </div>
 
-                <div id="settings-page" class="sidebar-item rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
+                <div class="sidebar-item active rounded-lg p-3 flex items-center space-x-3 cursor-pointer">
                     <i class="fas fa-cog text-gray-600"></i>
                     <span>Settings</span>
                 </div>
@@ -68,9 +68,9 @@
         </div>
 
         <!-- Main Content Area -->
-        <div id="dashboard-main-container" class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Top Bar -->
-            <div id="dashboard-top-bar" class="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+            <div class="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
                 <div class="flex-1 max-w-3xl mx-4">
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -97,12 +97,13 @@
             </div>
 
             <!-- Main Content -->
-            <div id="dashboard-content-container" class="flex-1 overflow-y-auto p-6">
+            <div class="flex-1 overflow-y-auto p-6">
+
 
             </div>
 
             <!-- Voice Assistant Bottom Bar -->
-            <div id="dashboard-assistant-bottom-bar" class="bg-white border-t border-gray-200 p-4">
+            <div class="bg-white border-t border-gray-200 p-4">
                 <div class="flex items-center justify-center">
                     <div class="relative">
                         <button id="voice-btn" class="w-16 h-16 rounded-full bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center text-white">
@@ -129,15 +130,7 @@
             </div>
         </div>
 
-        <!-- <script src="../scripts/window.js"></script> -->
-        <script src="../utils/pages/dashboard.js"></script>
         <script>
-
-            document.getElementById('settings-page').addEventListener("click", () => {
-                window.electronAPI.navigate('settings');
-            });
-
-
             // Voice button functionality
             const voiceBtn = document.getElementById('voice-btn');
             const voiceAnimation = document.getElementById('voice-animation');
@@ -145,7 +138,8 @@
 
             let isListening = false;
 
-            loadDashboardPage();
+            // window.api.loadPage();
+
 
             // create voice animation
             voiceBtn.addEventListener('click', function() {

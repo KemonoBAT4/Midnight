@@ -1,6 +1,6 @@
 
 const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
+const path = require('node:path');
 const sqlite3 = require('sqlite3').verbose();
 
 // FIXME: this does not work, find a way to put the icons
@@ -129,6 +129,7 @@ function createTables() {
     }
 }
 
+// Create sample data in the database
 function createSampleData() {
 
 }
@@ -149,17 +150,17 @@ ipcMain.handle('get-objects-from-table', async (event, tableName) => {
 ipcMain.handle('add-object-to-table', async (event, tableName, data) => {
     return new Promise((resolve, reject) => {
         const { username, name, surname, email } = data;
-        db.run(
-            `INSERT INTO users (username, name, surname, email) VALUES (?, ?, ?, ?)`,
-            [username, name, surname, email],
-            function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve({ id: this.lastID, ...userData });
-                }
-            }
-        );
+        // db.run(
+        //     `INSERT INTO users (username, name, surname, email) VALUES (?, ?, ?, ?)`,
+        //     [username, name, surname, email],
+        //     function(err) {
+        //         if (err) {
+        //             reject(err);
+        //         } else {
+        //             resolve({ id: this.lastID, ...data });
+        //         }
+        //     }
+        // );
     });
 });
 
@@ -175,31 +176,32 @@ ipcMain.handle('add-object-to-table', async (event, tableName, data) => {
 //     });
 // });
 
+let window;
+
 
 function midnightWindow() {
-    const win = new BrowserWindow({
+    window = new BrowserWindow({
         show: false,
         autoHideMenuBar: true,
         minimizable: true,
-        minWidth: 1600,
+        minWidth: 1400,
         minHeight: 800,
 
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            nodeIntegration: true,
-            contextIsolation: false
+            nodeIntegration: false, // important for security
+            contextIsolation: true // disables Node.js integration in renderer
         }
     });
 
-    win.maximize();
-    win.show();
+    window.maximize();
+    window.show();
 
     // future page name
-    win.loadFile('core/views/window.html');
-
-    // win.loadFile('core/views/midnightDesktopNew.html');
+    window.webContents.openDevTools();
+    window.loadFile('./core/views/window.html');
+    // window.loadFile('./core/views/test.html');
 }
-
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -216,3 +218,12 @@ app.whenReady().then(async () => {
         midnightWindow();
     }
 });
+
+ipcMain.on('navigate', (event, page) => {
+
+    if (page === 'home') {
+        window.loadFile('core/views/window.html');
+    } else {
+        window.loadFile("core/views/" + page + ".html");
+    }
+})

@@ -2,27 +2,27 @@
 
 // const dbInstance = remote.getGlobal('db');
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
-    let username = document.querySelector('.user-name');
-    let userrole = document.querySelector('.user-role');
+//     let username = document.querySelector('.user-name');
+//     let userrole = document.querySelector('.user-role');
 
-    // Fetch user data from the server
+//     // Fetch user data from the server
 
-    console.log("test")
+//     console.log("test")
 
-    // let user = localStorage.getItem('user');
+//     // let user = localStorage.getItem('user');
 
-    // if (user) {
-    //     user = JSON.parse(user);
-    //     username.textContent = user.name;
-    //     userrole.textContent = user.role;
-    // } else {
-    //     login();
-    // }
-    loadPage();
+//     // if (user) {
+//     //     user = JSON.parse(user);
+//     //     username.textContent = user.name;
+//     //     userrole.textContent = user.role;
+//     // } else {
+//     //     login();
+//     // }
+//     // loadPage();
 
-});
+// });
 
 // Example usage in your renderer process
 
@@ -104,7 +104,7 @@ async function exampleUsage() {
 }
 
 // Call the example
-exampleUsage();
+// exampleUsage();
 
 async function login() {
 
@@ -140,7 +140,7 @@ async function loadPage() {
     ]
 
     _loadDashboardTasks(tasks);
-    _loadNotes(notes);
+    // _loadNotes(notes);
     // loadMeetings(meetings);
     // loadEmails(emails);
 }
@@ -235,11 +235,6 @@ async function _loadDashboardNotes(notes) {
         "id": 1,
     }
     */
-}
-
-module.exports = {
-    loadPage,
-    login
 }
 
 // DASHBOARD MENU LOADING
