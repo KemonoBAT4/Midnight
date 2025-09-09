@@ -198,9 +198,8 @@ function midnightWindow() {
     window.show();
 
     // future page name
-    window.webContents.openDevTools();
+    // window.webContents.openDevTools();
     window.loadFile('./core/views/window.html');
-    // window.loadFile('./core/views/test.html');
 }
 
 app.on('window-all-closed', () => {
@@ -209,7 +208,6 @@ app.on('window-all-closed', () => {
     }
 });
 
-// Init the database when app is ready
 app.whenReady().then(async () => {
     // await initializeDatabase();
     midnightWindow();

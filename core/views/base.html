@@ -133,9 +133,30 @@
         <script src="../utils/pages/dashboard.js"></script>
         <script>
 
+            document.getElementById('dashboard-page').addEventListener("click", () => {
+                window.electronAPI.navigate('dashboard');
+            });
+
+            document.getElementById('calendar-page').addEventListener("click", () => {
+                window.electronAPI.navigate('calendar');
+            });
+
+            document.getElementById('tasks-page').addEventListener("click", () => {
+                window.electronAPI.navigate('tasks');
+            });
+
+            document.getElementById('notes-page').addEventListener("click", () => {
+                window.electronAPI.navigate('notes');
+            });
+
+            document.getElementById('notifications-page').addEventListener("click", () => {
+                window.electronAPI.navigate('notifications');
+            });
+
             document.getElementById('settings-page').addEventListener("click", () => {
                 window.electronAPI.navigate('settings');
             });
+
 
 
             // Voice button functionality

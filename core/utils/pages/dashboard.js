@@ -10,18 +10,26 @@ async function loadDashboardPage() {
         {
             "title": "Schedule Meeting",
             "subtitle": "Set up appointments",
+            "color": "indigo",
+            "icon": "<i class='fas fa-calendar text-indigo-600'></i>"
         },
         {
             "title": "Add Task",
             "subtitle": "Create reminders",
+            "color": "green",
+            "icon": "<i class='fas fa-tasks text-green-600'></i>"
         },
         {
             "title": "Check Email",
             "subtitle": "5 new messages",
+            "color": "purple",
+            "icon": "<i class='fas fa-envelope text-purple-600'></i>"
         },
         {
             "title": "Weather",
             "subtitle": "Sunny, 22°C",
+            "color": "blue",
+            "icon": "<i class='fas fa-cloud text-blue-600'></i>"
         }
     ]
 
@@ -114,8 +122,8 @@ async function _loadDashboardQuickActions(container, actions) {
     for (let action of actions) {
         quick_action_html += `
             <div class="bg-white rounded-xl shadow-sm p-4 flex items-center space-x-3 cursor-pointer hover:bg-indigo-50 transition-colors">
-                <div class="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center">
-                    <i class="fas fa-calendar text-indigo-600"></i>
+                <div class="w-12 h-12 rounded-lg bg-${action.color}-100 flex items-center justify-center">
+                    ${action.icon}
                 </div>
                 <div>
                     <div class="font-medium">${action.title}</div>
